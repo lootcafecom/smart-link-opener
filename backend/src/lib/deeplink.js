@@ -73,7 +73,8 @@ function buildDeepLink(destinationUrl) {
   const fallback = encodeURIComponent(url.toString());
   const androidIntent =
     `intent://${host}${url.pathname}${url.search}` +
-    `#Intent;scheme=https;package=${rule.androidPackage};S.browser_fallback_url=${fallback};end`;
+    `#Intent;scheme=https;package=${rule.androidPackage};` +
+    `category=android.intent.category.BROWSABLE;S.browser_fallback_url=${fallback};end`;
 
   return { iosScheme, androidIntent, matchedApp: rule.androidPackage };
 }
