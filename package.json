@@ -1,0 +1,3 @@
+git add package.json
+   git commit -m "Add root package.json for Railway detection"
+   git push
