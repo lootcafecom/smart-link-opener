@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Smart Link Opener</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="topbar">
+    <div class="mark">
+      <svg class="mark-icon" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="9" width="14" height="14" rx="6" stroke="#4361EE" stroke-width="2.4"/>
+        <rect x="16" y="9" width="14" height="14" rx="5" fill="#FF5A5F"/>
+      </svg>
+      <span>Smart&nbsp;Link&nbsp;Opener</span>
+    </div>
+    <span class="eyebrow">MVP</span>
+  </header>
+
+  <main class="hero">
+    <h1>Paste a link.<br>Land it in the app, not a browser tab.</h1>
+    <p class="lede">
+      One redirect URL that detects the visitor's device, tries the destination app's
+      deep link first, and only falls back to the web when the app isn't installed.
+    </p>
+
+    <section class="signature" aria-hidden="true">
+      <svg viewBox="0 0 560 120" class="signature-svg">
+        <line x1="30" y1="60" x2="220" y2="60" stroke="#D4D9E3" stroke-width="2" stroke-dasharray="1 8" stroke-linecap="round"/>
+        <g class="chain">
+          <circle cx="50" cy="60" r="16" fill="none" stroke="#4361EE" stroke-width="4"/>
+          <circle cx="80" cy="60" r="16" fill="none" stroke="#4361EE" stroke-width="4"/>
+        </g>
+        <path d="M230 60 L275 60 M262 47 L275 60 L262 73" fill="none" stroke="#12131A" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="arrow"/>
+        <rect x="300" y="30" width="60" height="60" rx="16" fill="#FF5A5F" class="appicon"/>
+        <path d="M320 60 l8 8 16 -18" fill="none" stroke="#FFFFFF" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="check"/>
+      </svg>
+    </section>
+
+    <form id="link-form" class="card" novalidate>
+      <label class="field">
+        <span class="field-label">Destination URL</span>
+        <input
+          type="url"
+          id="destinationUrl"
+          name="destinationUrl"
+          placeholder="https://open.spotify.com/track/…"
+          required
+          autocomplete="off"
+        >
+      </label>
+
+      <label class="field">
+        <span class="field-label">Custom slug <em>(optional)</em></span>
+        <div class="slug-row">
+          <span class="slug-prefix" id="slug-prefix">yourdomain.com/</span>
+          <input
+            type="text"
+            id="customSlug"
+            name="customSlug"
+            placeholder="auto-generated if left blank"
+            pattern="[a-zA-Z0-9_-]{3,32}"
+            autocomplete="off"
+          >
+        </div>
+      </label>
+
+      <button type="submit" id="submit-btn">Create smart link</button>
+
+      <p class="error" id="error-msg" role="alert" hidden></p>
+    </form>
+
+    <section class="result" id="result" hidden>
+      <span class="result-label">Your smart link is live</span>
+      <div class="result-row">
+        <code id="result-url"></code>
+        <button type="button" id="copy-btn">Copy</button>
+      </div>
+      <p class="result-meta" id="result-meta"></p>
+    </section>
+
+    <section class="supported">
+      <span class="supported-label">Recognized app targets</span>
+      <ul>
+        <li>YouTube</li>
+        <li>Instagram</li>
+        <li>Spotify</li>
+        <li>Amazon</li>
+        <li>X / Twitter</li>
+        <li>TikTok</li>
+        <li>Facebook</li>
+      </ul>
+      <p class="supported-note">Any other destination redirects straight to the mobile browser — no dead ends.</p>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <span>Node.js · Express · PostgreSQL</span>
+  </footer>
+
+</div>
+
+<script src="/app.js"></script>
+</body>
+</html>
